@@ -1,0 +1,4 @@
+cart -> refress korle mal local storage theke gayeb hoye hoye jacche
+admin -> middleware thik hoyni
+product details -> cart show error
+deliveryboy -> table(total pending order, total delivered order, total order, view more list(slno, ordno, username, companyname, medicinename, status))
