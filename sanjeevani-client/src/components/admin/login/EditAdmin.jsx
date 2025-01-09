@@ -3,8 +3,8 @@ import { toast } from "react-toastify";
 import UserService from "../../../services/UserService";
 import UserDetails from "./UserDetails";
 // @ts-ignore
-import Avatar from "../../../img/avatar.jpg";
-import { Navigate, useParams } from "react-router-dom";
+import Avatar from "../../../img/avatar.png";
+import { useParams } from "react-router-dom";
 import FormData from "form-data";
 import { MdCloudUpload, MdDelete } from "react-icons/md";
 import Spinner from "../../Spinner";
@@ -32,7 +32,7 @@ const EditAdmin = () => {
   } = state;
 
   let { id } = useParams();
-
+  
   const getData = async () => {
     const response = await UserService.getOne(id);
     var item = response.data.data[0];

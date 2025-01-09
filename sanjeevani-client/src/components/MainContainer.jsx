@@ -12,6 +12,7 @@ import SwipeLogin from "./Login/SwipeLogin";
 import SwipeFooter from "./SwipeFooter";
 import SearchField from "./SearchField";
 import MedicineServices from '../services/MedicineServices'
+import "./style.css"
 
 const MainContainer = () => {
   const [{ cartShow, loginShow, registerShow, footerShow, searchfieldShow }, dispatch] = useStateValue();
@@ -45,7 +46,7 @@ const MainContainer = () => {
     <div className="w-full h-auto flex flex-col items-center justify-center">
       <MedicineContainer />
 
-      <section className="w-full my-6 sm:my-12">
+      <section className="adjust mini w-full md:my-6 mt-[1.5rem] sm:my-12 lg:mt-72 xi:mt-4">
         <div className="w-full flex items-center justify-between">
           <p className="text-2xl font-semibold capitalize text-headingColor relative before:absolute before:rounded-lg before:content before:w-32 before:h-1 before:-bottom-2 before:left-0 before:bg-gradient-to-tr from-[#55AAAA] to-[#008080] transition-all ease-in-out duration-100">
             We are here for your safety
@@ -81,7 +82,6 @@ const MainContainer = () => {
       {loginShow && <SwipeLogin />}
       {registerShow && <SwipeRegister />}
       {footerShow && <SwipeFooter />}
-      {searchfieldShow && <SearchField/>}
     </div>
   );
 };

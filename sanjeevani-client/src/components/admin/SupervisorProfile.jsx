@@ -1,5 +1,5 @@
 import React from "react";
-import Img from "../../img/aritra.jpg"
+import Img from "../../img/prosun.jpg"
 
 export default function Profile() {
   return (
@@ -34,7 +34,7 @@ export default function Profile() {
                       <img
                         alt="..."
                         src={Img}
-                        className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16"
+                        className="shadow-xl rounded-full h-40 align-middle border-none absolute -m-16 -ml-20 lg:-ml-16"
                         style={{ maxWidth: "150px" }}
                       />
                     </div>

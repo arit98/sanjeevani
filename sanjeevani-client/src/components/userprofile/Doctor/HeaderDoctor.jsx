@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Logo from "../../../../img/logo.png";
-import UserService from "../../../../services/UserService";
+import Logo from "../../../img/logo.png";
+import UserService from "../../../services/UserService";
 import {
   FaShoppingCart,
   FaSignOutAlt,
@@ -10,17 +10,18 @@ import {
   FaHandsHelping,
 } from "react-icons/fa";
 import { IoNotificationsSharp, IoSettings } from "react-icons/io5";
-import Avatar from "../../../../img/avatar.jpg";
+import Avatar from "../../../img/avatar.png";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import { useStateValue } from "../../../../context/StateProvider";
-import { actionType } from "../../../../context/reducer";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import { useStateValue } from "../../../context/StateProvider";
+import { actionType } from "../../../context/reducer";
 import { TbLogin } from "react-icons/tb";
 import "react-modern-drawer/dist/index.css";
 import { FcSettings } from "react-icons/fc";
 import { RiProfileFill } from "react-icons/ri";
+import "../../style.css"
 
-const HeaderDelivery = () => {
+const HeaderDoctor = () => {
   const [
     { user, cartShow, cartItems, loginShow, isActive, AvatarImage },
     dispatch,
@@ -54,9 +55,11 @@ const HeaderDelivery = () => {
     console.log(response.data);
     dispatch({
       type: actionType.SET_AvatarImage,
-      AvatarImage: response.data.data[0].imageUrl,
+      AvatarImage: response.data.data[0]?response.data.data[0].imageUrl:Avatar,
     });
   };
+
+  const navigate = useNavigate()
 
   const Logout = () => {
     setIsMenu(false);
@@ -69,6 +72,7 @@ const HeaderDelivery = () => {
       type: actionType.SET_ISACTIVE,
       isActive: false,
     });
+    navigate("/")
   };
 
   const OpenMenu = () => {
@@ -83,7 +87,8 @@ const HeaderDelivery = () => {
   };
 
   return (
-    <header className="fixed z-50 w-screen p-3 px-4 md:p-2 md:px-16 bg-card shadow-md backdrop-blur-xl">
+   <div>
+     <header className="margin_header fixed z-50 w-screen p-3 px-4 md:p-2 md:px-16 md:-mt-24 md:-mx-16 bg-card shadow-md backdrop-blur-xl">
       {/* destop */}
       <div className="w-full h-full hidden md:flex items-center justify-between">
         <a href={"/admin"} className="flex items-center gap-2 cursor-pointer">
@@ -101,7 +106,7 @@ const HeaderDelivery = () => {
               whileTap={{ scale: 0.6 }}
               // user
 
-              src={user?.token ? AvatarImage : Avatar}
+              src={AvatarImage ? AvatarImage : Avatar}
               className="w-10 min-w-10 min-h-10 h-10 drop-shadow-lg cursor-pointer rounded-[50%]"
               alt="User Profile"
               onClick={OpenMenu}
@@ -155,7 +160,7 @@ const HeaderDelivery = () => {
         <div className="relative">
           <motion.img
             whileTap={{ scale: 0.6 }}
-            src={user?.token ? AvatarImage : Avatar}
+            src={AvatarImage ? AvatarImage : Avatar}
             className="w-10 min-w-10 min-h-10 h-10 drop-shadow-lg cursor-pointer rounded-[50%]"
             alt="User Profile"
             onClick={OpenMenu}
@@ -193,7 +198,9 @@ const HeaderDelivery = () => {
         </div>
       </div>
     </header>
+    <Outlet />
+   </div>
   );
 };
 
-export default HeaderDelivery;
+export default HeaderDoctor;

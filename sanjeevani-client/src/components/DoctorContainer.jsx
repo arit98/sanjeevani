@@ -54,7 +54,7 @@ const DoctorContainer = () => {
           <button
             type="button"
             className="bg-gradient-to-br from-[#55AAAA] to-[#008080] w-full md:w-auto px-4 py-2 rounded-lg hover:shadow-lg transition-all ease-in-out duration-100 text-slate-200"
-            data-mdb-ripple="true"
+            data-mdb-ripple=""
             data-mdb-ripple-color="light"
             onClick={openModal}
           >

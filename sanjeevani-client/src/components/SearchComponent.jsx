@@ -43,8 +43,7 @@ const SearchComponent = () => {
 
   return (
     <>
-      <div className="py-12 px-auto lg:absolute top-24 left-12 lg:ml-8">
-        <div className="w-[500px] md:max-w-[696px] max-w-[320px] h-16 mx-auto bg-white py-5 overflow-hidden rounded-xl">
+        <div className="w-[32rem] md:max-w-[43.5rem] max-w-[20rem] h-16 mx-auto bg-white py-5 overflow-hidden rounded-xl">
           {/* tab */}
           <div className="flex justify-between px-2 pb-3">
             <div className="flex items-center w-1 xs:h-4">
@@ -58,7 +57,7 @@ const SearchComponent = () => {
                 value={value}
               />
             </div>
-            <div className="absolute lg:top-28 top-48 lg:left-4 right-7 w-[86%] mx-auto md:w-[600px] bg-white flex mt-2 flex-col-reverse text-xl cursor-pointer">
+            <div className="absolute lg:top-[7.3rem] top-60 lg:left-8 right-7 w-[86%] mx-auto md:w-[31.25rem] bg-white flex mt-2 flex-col-reverse text-xl cursor-pointer z-50 rounded-b-2xl">
               {data
                 .filter((item) => {
                   const searchTerm = value.toLowerCase();
@@ -104,7 +103,6 @@ const SearchComponent = () => {
             </div>
           </div>
         </div>
-      </div>
 
       <style>
         {`

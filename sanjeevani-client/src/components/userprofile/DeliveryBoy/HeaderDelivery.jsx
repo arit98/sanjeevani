@@ -10,9 +10,9 @@ import {
   FaHandsHelping,
 } from "react-icons/fa";
 import { IoNotificationsSharp, IoSettings } from "react-icons/io5";
-import Avatar from "../../../img/avatar.jpg";
+import Avatar from "../../../img/avatar.png";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useStateValue } from "../../../context/StateProvider";
 import { actionType } from "../../../context/reducer";
 import { TbLogin } from "react-icons/tb";
@@ -58,6 +58,8 @@ const HeaderDelivery = () => {
     });
   };
 
+  const navigate = useNavigate()
+
   const Logout = () => {
     setIsMenu(false);
     localStorage.clear();
@@ -69,21 +71,16 @@ const HeaderDelivery = () => {
       type: actionType.SET_ISACTIVE,
       isActive: false,
     });
+    navigate("/")
   };
 
   const OpenMenu = () => {
     setIsMenu(!isMenu);
   };
 
-  const ShowLogin = () => {
-    dispatch({
-      type: actionType.SET_LOGIN_SHOW,
-      loginShow: !loginShow,
-    });
-  };
-
   return (
-    <header className="fixed z-50 w-screen p-3 px-4 md:p-2 md:px-16 bg-card shadow-md backdrop-blur-xl">
+    <>
+      <header className="fixed z-50 w-screen p-3 px-4 md:p-2 md:px-16 bg-card shadow-md backdrop-blur-xl">
       {/* destop */}
       <div className="w-full h-full hidden md:flex items-center justify-between">
         <a href={"/admin"} className="flex items-center gap-2 cursor-pointer">
@@ -101,7 +98,7 @@ const HeaderDelivery = () => {
               whileTap={{ scale: 0.6 }}
               // user
 
-              src={user?.token ? AvatarImage : Avatar}
+              src={AvatarImage ? AvatarImage : Avatar}
               className="w-10 min-w-10 min-h-10 h-10 drop-shadow-lg cursor-pointer rounded-[50%]"
               alt="User Profile"
               onClick={OpenMenu}
@@ -116,7 +113,7 @@ const HeaderDelivery = () => {
                 <p
                   className="m-2 p-2
                  flex gap-3 cursor-pointer rounded-md shadow-md items-center justify-center bg-slate-200 hover:bg-slate-300 transition-all duration-100 ease-in-out text-textColor text-base"
-                  onClick={Logout}
+                  onClick={()=>navigate("/deliveryboy/profile")}
                 >
                   Profile <RiProfileFill />
                 </p>
@@ -155,7 +152,7 @@ const HeaderDelivery = () => {
         <div className="relative">
           <motion.img
             whileTap={{ scale: 0.6 }}
-            src={user?.token ? AvatarImage : Avatar}
+            src={AvatarImage ? AvatarImage : Avatar}
             className="w-10 min-w-10 min-h-10 h-10 drop-shadow-lg cursor-pointer rounded-[50%]"
             alt="User Profile"
             onClick={OpenMenu}
@@ -193,6 +190,8 @@ const HeaderDelivery = () => {
         </div>
       </div>
     </header>
+    <Outlet />
+    </>
   );
 };
 

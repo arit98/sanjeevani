@@ -58,7 +58,7 @@ const CreateStates = () => {
           value="Save"
           className="h-8 w-full bg-green-500 cursor-pointer"
         />
-        <Link to="/auth/states">
+        <Link to="/admin/states">
           <input
             type="button"
             value="Go Back"

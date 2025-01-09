@@ -6,9 +6,6 @@ import {
   MdCloudUpload,
   MdDelete,
   MdMedicalServices,
-  MdAttachMoney,
-  MdUpload,
-  MdOutlineMedicalServices,
 } from "react-icons/md";
 import { useStateValue } from "../../../../context/StateProvider";
 import { useParams } from "react-router-dom";
@@ -32,7 +29,7 @@ const initialState = {
   igst: "",
 };
 
-const CreateContainer = () => {
+const CreateItem = () => {
   const [title, setTitle] = useState("");
   const [calories, setCalories] = useState("");
   const [price, setPrice] = useState("");
@@ -63,18 +60,18 @@ const CreateContainer = () => {
   const [data1, setData1] = useState([]);
   let { id } = useParams();
 
-  const [selectedImage, setSelectedImage] = useState();
+  const [selectedImage, setSelectedImage] = useState([]);
+  console.log(selectedImage);
 
-  
-  const uploadImage = (e) => {
-    // console.log(e.target.files)
-      setSelectedImage(e.target.files[0]);
-      console.log(selectedImage)
+  const uploadImg = (e) => {
+    setSelectedImage(e.target.files);
   };
 
-  const deleteImage = () => {
-    setSelectedImage();
-  };
+  function deleteImage() {
+    // const select = selectedImage.filter((item, index) => index !== e);
+    // setSelectedImage(select);
+    console.log("select");
+  }
 
   const loadData = async () => {
     const response = await CategoryService.getAll();
@@ -92,20 +89,28 @@ const CreateContainer = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!name || !company_id || !category_id || !page_price || !company_id || !box_price || !status) {
+    if (
+      !name ||
+      !company_id ||
+      !category_id ||
+      !page_price ||
+      !company_id ||
+      !box_price ||
+      !status
+    ) {
       toast.error("Please Provide Value");
     } else {
-      var form = new FormData()
+      var form = new FormData();
 
-      form.append("name",name)
-      form.append("company_id",company_id)
-      form.append("category_id",category_id)
-      form.append("short_desc",short_desc)
-      form.append("long_desc",long_desc)
-      form.append("status",status)
-      form.append("medicine_images",selectedImage)
-      form.append("page_price",page_price)
-      form.append("box_price",box_price)
+      form.append("name", name);
+      form.append("company_id", company_id);
+      form.append("category_id", category_id);
+      form.append("short_desc", short_desc);
+      form.append("long_desc", long_desc);
+      form.append("status", status);
+      form.append("medicine_images", selectedImage);
+      form.append("page_price", page_price);
+      form.append("box_price", box_price);
 
       const response = await MedicalServices.createMed(form);
 
@@ -129,7 +134,7 @@ const CreateContainer = () => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setState({ ...state, [name]: value });
-    console.log(state)
+    console.log(state);
   };
 
   return (
@@ -233,20 +238,20 @@ const CreateContainer = () => {
               <option value="other" className="bg-primary">
                 Select Status
               </option>
-                  <option
-                    key={id}
-                    className="text-base border-0 outline-none capitalize bg-primary text-headingColor"
-                    value="active"
-                  >
-                    Active
-                  </option>
-                  <option
-                    key={id}
-                    className="text-base border-0 outline-none capitalize bg-primary text-headingColor"
-                    value="inactive"
-                  >
-                    Inactive
-                  </option>
+              <option
+                key={id}
+                className="text-base border-0 outline-none capitalize bg-primary text-headingColor"
+                value="active"
+              >
+                Active
+              </option>
+              <option
+                key={id}
+                className="text-base border-0 outline-none capitalize bg-primary text-headingColor"
+                value="inactive"
+              >
+                Inactive
+              </option>
             </select>
           </div>
           <div className="group flex justify-center items-center flex-col border-2 border-dotted border-gray-300 w-full h-225 md:h-340 cursor-pointer rounded-lg">
@@ -254,37 +259,48 @@ const CreateContainer = () => {
               <Spinner />
             ) : (
               <>
-                <label className="flex justify-center items-center gap-3">
-                  <MdCloudUpload className="text-4xl text-blue-400" />
-                  <span className="text-blue-400 cursor-pointer">
-                    Upload Image
-                  </span>
-                  <input
-                    accept="image/*"
-                    type="file"
-                    name="medicine_images"
-                    value={medicine_images}
-                    onChange={uploadImage}
-                    className="sr-only"
-                  />
-                </label>
-                <div className="flex flex-col justify-center items-center -mt-12" >
-                  {selectedImage && (
-                    <div style={styles.preview}>
-                      <img
-                        src={URL.createObjectURL(selectedImage)}
-                        style={styles.image}
-                        className="cursor-text"
-                        alt="Thumb"
-                        name="medicine_images"
-                        value={medicine_images}
-                      />
-                      <button onClick={deleteImage} style={styles.delete}>
-                        <MdDelete className="text-3xl" />
-                      </button>
-                    </div>
-                  )}
-                </div>
+                {setSelectedImage != null ? (
+                  <label className="flex justify-center items-center absolute">
+                    <MdCloudUpload className="text-4xl text-blue-400" />
+                    <span className="text-blue-400 cursor-pointer">
+                      Upload Image
+                    </span>
+                    <input
+                      multiple
+                      accept="image/*"
+                      type="file"
+                      name="medicine_images"
+                      value={medicine_images}
+                      onChange={uploadImg}
+                      className="sr-only"
+                    />
+                  </label>
+                ) : (
+                  <span className="h-10 w-10">+</span>
+                )}
+                <span>
+                  <div className="group flex flex-wrap justify-center items-center gap-6 mt-0 w-full h-[200px] md:h-[335px] overflow-hidden rounded-lg overflow-y-scroll scrollbar-none">
+                    {Array.from(selectedImage).map((item, index) => {
+                      return (
+                        <div>
+                          <img
+                            src={item ? URL.createObjectURL(item) : null}
+                            className="md:h-[100px] md:w-[150px] h-[70px] w-[120px]"
+                            alt="Thumb"
+                            name="medicine_images"
+                            value={medicine_images}
+                          />
+                          <button
+                            type="button"
+                            onClick={() => deleteImage(index)}
+                          >
+                            delete
+                          </button>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </span>
               </>
             )}
           </div>
@@ -327,33 +343,4 @@ const CreateContainer = () => {
   );
 };
 
-export default CreateContainer;
-
-const styles = {
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    paddingTop: 50,
-  },
-  preview: {
-    display: "flex",
-    flexDirection: "column",
-  },
-  image: { maxWidth: "100%", maxHeight: 320 },
-  delete: {
-    cursor: "pointer",
-    padding: 15,
-    background: "red",
-    borderRadius: "50%",
-    color: "white",
-    border: "none",
-    width: 50,
-    height: 50,
-    justifyContent: "center",
-    display: "flex",
-    marginLeft: "auto",
-    marginTop: -60,
-  },
-};
+export default CreateItem;

@@ -1,6 +1,6 @@
 export { default as Header } from "./Header";
 export { default as MainContainer } from "./MainContainer";
-export { default as CreateContainer } from "./admin/navbar/Items/CreateContainer";
+export { default as CreateItem } from "./admin/navbar/Items/CreateItem";
 export { default as DoctorContainer } from "./DoctorContainer";
 export { default as MedicineContainer } from "./MedicineContainer";
 export { default as RowContainer } from "./RowContainer";

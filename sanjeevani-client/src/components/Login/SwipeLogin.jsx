@@ -82,45 +82,61 @@ const SwipeLogin = () => {
         password: password,
       };
       const response = await UserService.login(payload);
-      dispatch({
-        type: actionType.SET_USER,
-        user: response.data.data,
-      });
       console.log("after login ", response.data);
       if (response.data.status) {
         dispatch({
+          type: actionType.SET_USER,
+          user: {
+            user_id: response.data.data.id,
+            token: response.data.token,
+            role: response.data.data.role,
+          },
+        });
+        dispatch({
           type: actionType.SET_ISACTIVE,
           isActive: true,
-        })
+        });
         if (response.data.data.role === 3) {
           toast.success(response.data.msg);
           Constant.setToken(response.data.token);
-          Constant.setUserId(response.data.data.id);
-          Constant.setUserRole(response.data.data.role);
+          var temp = {
+            id: response.data.data.id,
+            role: response.data.data.role,
+          };
+          Constant.setUserInfo(JSON.stringify(temp));
           // Constant.setUserImg(response.data.data.user_details[0].image_profile)
           ShowLogin();
-          navigate("/auth/doctor");
+          navigate("/doctor");
         } else if (response.data.data.role === 4) {
           toast.success(response.data.msg);
           Constant.setToken(response.data.token);
-          Constant.setUserId(response.data.data.id);
-          Constant.setUserRole(response.data.data.role);
+          var temp = {
+            id: response.data.data.id,
+            role: response.data.data.role,
+          };
+          Constant.setUserInfo(JSON.stringify(temp));
           // Constant.setUserImg(response.data.data.user_details[0].image_profile)
           ShowLogin();
-          navigate("/auth/deliveryboy");
+          navigate("/storemanager");
         } else if (response.data.data.role === 5) {
           toast.success(response.data.msg);
           Constant.setToken(response.data.token);
-          Constant.setUserId(response.data.data.id);
-          Constant.setUserRole(response.data.data.role);
+          var temp = {
+            id: response.data.data.id,
+            role: response.data.data.role,
+          };
+          Constant.setUserInfo(JSON.stringify(temp));
           // Constant.setUserImg(response.data.data.user_details[0].image_profile)
           ShowLogin();
-          navigate("/auth/storemanager");
+          navigate("/deliveryboy");
         } else if (response.data.data.role === 6) {
           toast.success(response.data.msg);
           Constant.setToken(response.data.token);
-          Constant.setUserId(response.data.data.id);
-          Constant.setUserRole(response.data.data.role);
+          var temp = {
+            id: response.data.data.id,
+            role: response.data.data.role,
+          };
+          Constant.setUserInfo(JSON.stringify(temp));
           // Constant.setUserImg(response.data.data.user_details[0].image_profile)
           ShowLogin();
           navigate("/");
@@ -129,7 +145,9 @@ const SwipeLogin = () => {
         }
         state.email = "";
         state.password = "";
-      } else toast.error(response.data.msg);
+      } else {
+        toast.error(response.data.msg);
+      }
     }
   };
 

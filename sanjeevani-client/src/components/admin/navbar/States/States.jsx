@@ -25,12 +25,12 @@ const Company = () => {
 
   return (
     <>
-      <div className="py-10 -mr-16">
-      <div className="flex items-start">
+      <div className="py-10 mr-2 overflow-x-auto">
+      <div className="flex items-start -mt-16 mr-20">
         <div className="mx-auto mr-6 container bg-white shadow rounded w-[1450px]">
             <div className="flex flex-col lg:flex-row p-4 lg:p-8 justify-between items-start lg:items-stretch w-full">
               <div className="w-full lg:w-1/3 flex flex-col lg:flex-row items-start lg:items-center">
-                <Link to="/auth/states/createData">
+                <Link to="/admin/states/createData">
                   <div>
                     <button className="h-10 w-32 bg-blue-600 text-white rounded-sm">
                       Add State
@@ -105,7 +105,7 @@ const Company = () => {
             </div>
             <div className="w-full overflow-x-scroll xl:overflow-x-hidden">
               <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400">
                   <tr>
                     <th scope="col" className="py-3 px-6">
                       ID
@@ -128,24 +128,24 @@ const Company = () => {
                   {data.length > 0
                     ? data.map((item) => (
                         <tr className="h-0 border-gray-300 dark:border-gray-200 border-b">
-                          <td className="text-sm p-6 whitespace-no-wrap text-gray-800 dark:text-gray-100">
+                          <td className="text-sm p-6 whitespace-no-wrap text-gray-800">
                             {item.id}
                           </td>
-                          <td className="text-sm p-12 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">
+                          <td className="text-sm p-12 whitespace-no-wrap text-gray-800 tracking-normal leading-4">
                             {item.name}
                           </td>
-                          <td className="text-sm p-12 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">
+                          <td className="text-sm p-12 whitespace-no-wrap text-gray-800 tracking-normal leading-4">
                             {item.company_regno}
                           </td>
-                          <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">
+                          <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 tracking-normal leading-4">
                             {item.created_at}
                           </td>
-                          <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">
+                          <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 tracking-normal leading-4">
                             {item.updated_at}
                           </td>
-                          <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 dark:text-gray-100 tracking-normal leading-4">
+                          <td className="text-sm pr-6 whitespace-no-wrap text-gray-800 tracking-normal leading-4">
                             <div className="flex items-center justify-center gap-6 pr-6">
-                            <Link to={`/auth/states/editData/${item.id}`}>
+                            <Link to={`/admin/state/editData/${item.id}`}>
                                 <button className="h-10 w-24 bg-blue-600 text-white rounded-sm">
                                   Edit
                                 </button>

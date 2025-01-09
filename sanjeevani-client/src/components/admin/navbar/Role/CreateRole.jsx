@@ -60,7 +60,7 @@ const CreateRole = () => {
           value="Save"
           className="h-8 w-full bg-green-500 cursor-pointer"
         />
-        <Link to="/auth/role">
+        <Link to="/admin/role">
           <input
             type="button"
             value="Go Back"

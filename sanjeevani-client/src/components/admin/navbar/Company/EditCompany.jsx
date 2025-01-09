@@ -101,7 +101,7 @@ const EditCompany = () => {
           value="Save"
           className="h-8 w-full bg-green-500 cursor-pointer"
         />
-        <Link to="/auth/company">
+        <Link to="/admin/company">
           <input
             type="button"
             value="Go Back"

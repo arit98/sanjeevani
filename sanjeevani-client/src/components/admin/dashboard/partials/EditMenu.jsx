@@ -36,7 +36,7 @@ function EditMenu({
       <button
         ref={trigger}
         className={`text-slate-400 hover:text-slate-500 rounded-full ${dropdownOpen && 'bg-slate-100 text-slate-500'}`}
-        aria-haspopup="true"
+        aria-haspopup=""
         onClick={() => setDropdownOpen(!dropdownOpen)}
         aria-expanded={dropdownOpen}
       >

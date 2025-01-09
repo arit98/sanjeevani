@@ -31,26 +31,26 @@ const SwipeRegister = () => {
 
   const [icon, setIcon] = useState(AiFillEyeInvisible);
 
-  const [icon2, setIcon2] = useState(AiFillEyeInvisible)
+  const [icon2, setIcon2] = useState(AiFillEyeInvisible);
 
   const handleToggle = () => {
-      if (type === "password") {
-        setIcon(AiFillEyeInvisible);
-        setType("text");
-      } else {
-        setIcon(AiFillEye);
-        setType("password");
-      }
+    if (type === "password") {
+      setIcon(AiFillEyeInvisible);
+      setType("text");
+    } else {
+      setIcon(AiFillEye);
+      setType("password");
+    }
   };
 
   const handleToggle2 = () => {
-      if (type2 === "password") {
-        setIcon2(AiFillEyeInvisible);
-        setType2("text");
-      } else {
-        setIcon2(AiFillEye);
-        setType2("password");
-      }
+    if (type2 === "password") {
+      setIcon2(AiFillEyeInvisible);
+      setType2("text");
+    } else {
+      setIcon2(AiFillEye);
+      setType2("password");
+    }
   };
 
   const RegisterLogin = () => {
@@ -68,9 +68,9 @@ const SwipeRegister = () => {
   };
 
   const BackButton = () => {
-    ShowLogin()
-    RegisterLogin()
-  }
+    ShowLogin();
+    RegisterLogin();
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -94,8 +94,8 @@ const SwipeRegister = () => {
         state.name = "";
         state.phone_number = "";
         toast.success(response.data.msg);
-        RegisterLogin()
-        ShowLogin()
+        RegisterLogin();
+        ShowLogin();
       } else toast.error(response.data.msg);
     }
   };
@@ -115,7 +115,7 @@ const SwipeRegister = () => {
         <div className="w-full flex items-center justify-between p-4 cursor-pointer">
           <motion.div whileTap={{ scale: 0.75 }}>
             <MdOutlineKeyboardBackspace
-            // @ts-ignore
+              // @ts-ignore
               className="text-textColor text-3xl"
               onClick={BackButton}
             />
@@ -162,8 +162,8 @@ const SwipeRegister = () => {
               </p>
               <hr className="w-full bg-gray-400" />
             </div>
-            <div className="w-full h-340 md:h-42 flex flex-col gap-3 overflow-y-scroll scrollbar-none">
-              <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
+              <div className="w-full h-[22rem] md:h-42 flex flex-col gap-3 overflow-y-scroll scrollbar-none">
                 <div>
                   <label
                     htmlFor="name"
@@ -273,16 +273,15 @@ const SwipeRegister = () => {
                     </div>
                   </div>
                 </div>
-                <div className="mt-8">
-                  <button
-                    type="submit"
-                    className="focus:ring-2 focus:ring-offset-2 focus:ring-teal-700 text-sm font-semibold leading-none text-white focus:outline-none bg-teal-700 border-none rounded hover:bg-teal-600 py-4 w-full"
-                  >
-                    Register
-                  </button>
-                </div>
-              </form>
-            </div>
+                <div className="mt-8"></div>
+              </div>
+              <button
+                type="submit"
+                className="focus:ring-2 focus:ring-offset-2 focus:ring-teal-700 text-sm font-semibold leading-none text-white focus:outline-none bg-teal-700 border-none rounded hover:bg-teal-600 py-4 w-full"
+              >
+                Register
+              </button>
+            </form>
           </div>
         </div>
       </motion.div>

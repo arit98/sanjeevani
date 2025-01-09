@@ -16,22 +16,6 @@ import { RiGhostFill } from "react-icons/ri";
 import { FcAddDatabase, FcBusinessman, FcCollaboration, FcPieChart, FcTodoList } from "react-icons/fc";
 
 const NavBar = () => {
-  const [{ user, adminmenuShow }, dispatch] = useStateValue();
-
-  const SetMenu = () => {
-    dispatch({
-      type: actionType.SET_ADMINMENU_SHOW,
-      adminmenuShow: !adminmenuShow,
-    });
-  };
-
-  const logout = () => {
-    console.log(user);
-    SetMenu();
-    localStorage.clear();
-    toast.success("Successfully logout");
-  };
-
   return (
     <>
       <motion.div
@@ -42,10 +26,10 @@ const NavBar = () => {
       >
         <ProSidebarProvider>
           <aside className="w-full h-screen" aria-label="Sidebar">
-            <div className="rounded dark:bg-gray-800">
+            <div className="rounded bg-gray-100">
               <Sidebar>
                 <Menu>
-                  <ul className="space-y-2 w-225" >
+                  <ul className="space-y-2 w-225 ml-4 mt-4" >
                     <div className="w-225 h-full flex items-center justify-start px-8">
                       <a href={"/"} >
                         <motion.img
@@ -59,8 +43,8 @@ const NavBar = () => {
                     </div>
                     <li>
                       <Link
-                        to={"admin/dashboard"}
-                        className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                        to={"/admin"}
+                        className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100"
                       >
                         <FcPieChart/>
                         <span className="ml-3">Dashboard</span>
@@ -75,7 +59,7 @@ const NavBar = () => {
                           aria-labelledby="sidenavSecEx2"
                           data-bs-parent="#sidenavSecExample"
                         >
-                          <Link to={"/admin/createItem"}>
+                          <Link to={"/admin/create-item"}>
                             <MenuItem className="relative">
                               <a
                                 href="#!"
@@ -87,7 +71,7 @@ const NavBar = () => {
                               </a>
                             </MenuItem>
                           </Link>
-                          <Link to={"#"}>
+                          <Link to={"/admin/view-item"}>
                             <MenuItem className="relative">
                               <a
                                 href="#!"
@@ -141,7 +125,7 @@ const NavBar = () => {
                     <li>
                       <Link
                         to={"admin/category"}
-                        className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                        className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg  hover:bg-gray-100"
                       >
                         <FcTodoList/>
                         <span className="ml-3">Category</span>
@@ -150,7 +134,7 @@ const NavBar = () => {
                     <li>
                       <Link
                         to={"admin/role"}
-                        className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                        className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100"
                       >
                         <FcBusinessman/>
                         <span className="ml-3">User Role</span>
@@ -159,7 +143,7 @@ const NavBar = () => {
                     <li>
                       <Link
                         to={"admin/group"}
-                        className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                        className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 "
                       >
                         <FcCollaboration/>
                         <span className="ml-3">Group</span>
@@ -168,7 +152,7 @@ const NavBar = () => {
                     <li>
                       <Link
                         to={"admin/company"}
-                        className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                        className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg  hover:bg-gray-100"
                       >
                         <FcCollaboration/>
                         <span className="ml-3">Company</span>
@@ -177,7 +161,7 @@ const NavBar = () => {
                     <li>
                       <Link
                         to={"admin/state"}
-                        className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                        className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100"
                       >
                         <FcCollaboration/>
                         <span className="ml-3">State</span>

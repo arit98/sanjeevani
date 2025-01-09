@@ -86,7 +86,7 @@ const CreateCategory = () => {
             value="Save"
             className="h-8 w-full bg-green-500 cursor-pointer"
           />
-          <Link to="/auth/category">
+          <Link to="/admin/category">
             <input
               type="button"
               value="Go Back"

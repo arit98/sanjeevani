@@ -47,9 +47,7 @@ const SearchContainer = () => {
       <div className="bg-teal-50">
         <main className="mx-auto px-4 sm:px-6 lg:px-8 w-[100%]">
           <div className="flex items-baseline justify-between border-b border-gray-200 pt-24 pb-6">
-            <div className="text-gray-900 bg-red-900">
-              <SearchComponent />
-            </div>
+              <div className="flex items-center justify-center mx-auto -mt-24"><SearchComponent /></div>
             <div className="flex items-center">
               <div className="relative inline-block text-left">
                 <div>
@@ -58,7 +56,7 @@ const SearchContainer = () => {
                     className="group inline-flex justify-center text-sm font-medium hover:text-gray-900 text-red-500"
                     id="menu-button"
                     aria-expanded="false"
-                    aria-haspopup="true"
+                    aria-haspopup=""
                   >
                     Sort
                     {/* Heroicon name: mini/chevron-down */}
@@ -67,7 +65,7 @@ const SearchContainer = () => {
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
                       fill="currentColor"
-                      aria-hidden="true"
+                      aria-hidden=""
                     >
                       <path
                         fillRule="evenodd"
@@ -77,16 +75,6 @@ const SearchContainer = () => {
                     </svg>
                   </button>
                 </div>
-                {/*
-        Dropdown menu, show/hide based on menu state.
-
-        Entering: "transition ease-out duration-100"
-          From: "transform opacity-0 scale-95"
-          To: "transform opacity-100 scale-100"
-        Leaving: "transition ease-in duration-75"
-          From: "transform opacity-100 scale-100"
-          To: "transform opacity-0 scale-95"
-      */}
                 <div
                   className="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none"
                   role="menu"
@@ -95,11 +83,6 @@ const SearchContainer = () => {
                   tabIndex={-1}
                 >
                   <div className="py-1" role="none">
-                    {/*
-            Active: "bg-gray-100", Not Active: ""
-
-            Selected: "font-medium text-gray-900", Not Selected: "text-gray-500"
-          */}
                     <a
                       href="#"
                       className="font-medium text-gray-900 block px-4 py-2 text-sm"
@@ -153,10 +136,9 @@ const SearchContainer = () => {
                 className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7"
               >
                 <span className="sr-only">View grid</span>
-                {/* Heroicon name: mini/squares-2x2 */}
                 <svg
                   className="h-5 w-5"
-                  aria-hidden="true"
+                  aria-hidden=""
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                   fill="currentColor"
@@ -176,7 +158,7 @@ const SearchContainer = () => {
                 {/* Heroicon name: mini/funnel */}
                 <svg
                   className="h-5 w-5"
-                  aria-hidden="true"
+                  aria-hidden=""
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                   fill="currentColor"
@@ -221,7 +203,7 @@ const SearchContainer = () => {
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 20 20"
                           fill="currentColor"
-                          aria-hidden="true"
+                          aria-hidden=""
                         >
                           <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
                         </svg>
@@ -235,7 +217,7 @@ const SearchContainer = () => {
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 20 20"
                           fill="currentColor"
-                          aria-hidden="true"
+                          aria-hidden=""
                         >
                           <path
                             fillRule="evenodd"
@@ -293,7 +275,7 @@ const SearchContainer = () => {
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 20 20"
                           fill="currentColor"
-                          aria-hidden="true"
+                          aria-hidden=""
                         >
                           <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
                         </svg>
@@ -307,7 +289,7 @@ const SearchContainer = () => {
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 20 20"
                           fill="currentColor"
-                          aria-hidden="true"
+                          aria-hidden=""
                         >
                           <path
                             fillRule="evenodd"

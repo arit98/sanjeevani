@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import UserService from "../../../services/UserService";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
+import RoleServices from "../../../services/RoleServices";
 
 const initialState = {
   email: "",
@@ -22,6 +23,22 @@ export default function Register() {
   const { email, password1, password2, role, name, phone_number } = state;
 
   const [data, setData] = useState([]);
+
+  const getData = async () => {
+    const response = await RoleServices.getAll();
+    console.log(response.data.data);
+    var item = response.data.data[0];
+    // console.log(item.user_details[0]);
+    setState({
+      id: item.id,
+      image_profile: item.user_details[0].image_profile,
+      user_id: item.user_details[0].user_id,
+      // aadhar_card_image: item.user_details[0].aadhar_card_image,
+      aadhar_card_no: item.user_details[0].aadhar_card_no,
+      name: item.user_details[0].name,
+      phone_number: item.user_details[0].phone_number,
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -55,6 +72,10 @@ export default function Register() {
     const { name, value } = e.target;
     setState({ ...state, [name]: value });
   };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <>
@@ -143,27 +164,18 @@ export default function Register() {
                   </div>
 
                   <div className="col-span-6 sm:col-span-4">
-                <select
-                  onChange={handleInputChange}
-                  className="outline-none w-full text-base border-b-2 border-gray-200 p-2 rounded-md cursor-pointer"
-                  name="role"
-                  value={role}
-                >
-                  <option value="other" className="bg-primary">
-                    Role
-                  </option>
-                  {data &&
-                    data.map((item) => (
-                      <option
-                        key={item.id}
-                        className="text-base border-0 outline-none capitalize bg-primary text-headingColor"
-                        value={item.id}
-                      >
-                        thrdhyy
+                    <select
+                      onChange={handleInputChange}
+                      className="outline-none w-full text-base border-b-2 border-gray-200 p-2 rounded-md cursor-pointer"
+                      name="role"
+                      value={role}
+                    >
+                      <option value="other" className="bg-primary">
+                        Role
                       </option>
-                    ))}
-                </select>
-              </div>
+                      <option>hgfkuyfuuf</option>
+                    </select>
+                  </div>
 
                   <div className="relative w-full mb-3">
                     <label

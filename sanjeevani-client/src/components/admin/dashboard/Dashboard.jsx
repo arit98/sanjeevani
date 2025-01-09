@@ -18,15 +18,15 @@ import DashboardCard13 from '../dashboard/partials/dashboard/DashboardCard13';
 function Dashboard() {
 
   return (
-    <div className="flex h-screen overflow-hidden -mr-52">
+    <div className="flex h-screen overflow-auto justify-center">
 
       {/* Content area */}
-      <div className="relative flex flex-col flex-1 overflow-y-hidden overflow-x-hidden">
+      <div className="relative flex flex-col flex-1 overflow-y-scroll overflow-x-hidden">
 
         {/*  Site header */}
 
         <main>
-          <div className="px-4 sm:px-6 lg:px-8 py-8 w-[1200px] mx-auto">
+          <div className="px-4 sm:px-6 lg:px-8 py-8 w-[1600px] mx-72">
 
             {/* Welcome banner */}
             <WelcomeBanner />

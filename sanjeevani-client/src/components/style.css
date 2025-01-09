@@ -1,0 +1,28 @@
+.margin_header {
+  margin: 0;
+}
+
+.hide {
+  display: none;
+  background: #000;
+}
+
+
+@media only screen and (max-width: 320px) {
+  .adjust{
+    margin-top: 16.5rem;
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .prescrption{
+    transform: translate(500px);
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .hero{
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

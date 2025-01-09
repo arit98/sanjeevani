@@ -61,7 +61,7 @@ const CreateGroups = () => {
           value="Save"
           className="h-8 w-full bg-green-500 cursor-pointer"
         />
-        <Link to="/auth/groups">
+        <Link to="/admin/groups">
           <input
             type="button"
             value="Go Back"

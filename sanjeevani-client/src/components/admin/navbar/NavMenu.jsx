@@ -48,7 +48,7 @@ import {
                     <ul className="space-y-2 w-225" >
                       <li>
                         <Link
-                          to={"admin/dashboard"}
+                          to={"/admin"}
                           className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                         >
                           <FcPieChart/>
@@ -64,7 +64,7 @@ import {
                             aria-labelledby="sidenavSecEx2"
                             data-bs-parent="#sidenavSecExample"
                           >
-                            <Link to={"/admin/createItem"}>
+                            <Link to={"/admin/create-item"}>
                               <MenuItem className="relative">
                                 <a
                                   href="#!"
@@ -76,7 +76,7 @@ import {
                                 </a>
                               </MenuItem>
                             </Link>
-                            <Link to={"#"}>
+                            <Link to={"/admin/view-item"}>
                               <MenuItem className="relative">
                                 <a
                                   href="#!"

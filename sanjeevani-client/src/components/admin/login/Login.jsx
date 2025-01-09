@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import Constant from "../../../services/Constant";
 import UserService from "../../../services/UserService";
 import { useNavigate } from "react-router-dom";
-import Avatar from "../../../img/avatar.jpg";
+import Avatar from "../../../img/avatar.png";
 import { actionType } from "../../../context/reducer";
 import { useStateValue } from "../../../context/StateProvider";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
@@ -16,10 +16,9 @@ const initialState = {
 
 export default function Login() {
   const [state, setState] = useState(initialState);
-  const [{ user }, dispatch] =
-    useStateValue();
-    const [type, setType] = useState("password");
-    const [icon, setIcon] = useState(AiFillEyeInvisible);
+  const [{ user }, dispatch] = useStateValue();
+  const [type, setType] = useState("password");
+  const [icon, setIcon] = useState(AiFillEyeInvisible);
 
   const { email, password } = state;
 
@@ -45,17 +44,20 @@ export default function Login() {
         password: password,
       };
       const response = await UserService.login(payload);
-      dispatch({
-        type: actionType.SET_USER,
-        user: response.data.data,
-      });
-
       if (response.data.status) {
+        dispatch({
+          type: actionType.SET_USER,
+          user: { user_id: response.data.data.id, token: response.data.token, role:response.data.data.role },
+        });
+        console.log("abc", JSON.stringify(user));
         if (response.data.data.role === 1 || response.data.data.role === 2) {
           toast.success(response.data.msg);
           Constant.setToken(response.data.token);
-          Constant.setUserId(response.data.data.id);
-          Constant.setUserRole(response.data.data.role);
+          var temp={
+            id:response.data.data.id,
+            role:response.data.data.role
+          }
+          Constant.setUserInfo(JSON.stringify(temp))
           navigate("/admin/stufftable");
         } else {
           navigate("/admin/login");
@@ -78,7 +80,9 @@ export default function Login() {
         <div className="flex content-center items-center justify-center h-full">
           <div className="w-full lg:w-4/12 px-4">
             <div className="bg-card backdrop-blur-lg relative flex flex-col min-w-0 break-words w-full mb-6 shadow-xl rounded-lg bg-blueGray-200 border-0">
-              <span className="text-center font-bold text-teal-600 mb-10 text-2xl mt-4">ADMIN PORTAL</span>
+              <span className="text-center font-bold text-teal-600 mb-10 text-2xl mt-4">
+                ADMIN PORTAL
+              </span>
               <div className="h-24 w-24 mx-auto rounded-lg">
                 <img className="rounded-full" src={Avatar} />
               </div>

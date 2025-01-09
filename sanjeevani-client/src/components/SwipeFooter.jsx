@@ -35,7 +35,7 @@ const SwipeFooter = () => {
             <div className="flex justify-center mr-24">
               <a href="#!" className="mr-6 text-emerald-900">
                 <svg
-                  aria-hidden="true"
+                  aria-hidden=""
                   focusable="false"
                   data-prefix="fab"
                   data-icon="facebook-f"
@@ -52,7 +52,7 @@ const SwipeFooter = () => {
               </a>
               <a href="#!" className="mr-6 text-emerald-900">
                 <svg
-                  aria-hidden="true"
+                  aria-hidden=""
                   focusable="false"
                   data-prefix="fab"
                   data-icon="twitter"
@@ -69,7 +69,7 @@ const SwipeFooter = () => {
               </a>
               <a href="#!" className="mr-6 text-emerald-900">
                 <svg
-                  aria-hidden="true"
+                  aria-hidden=""
                   focusable="false"
                   data-prefix="fab"
                   data-icon="google"
@@ -86,7 +86,7 @@ const SwipeFooter = () => {
               </a>
               <a href="#!" className="mr-6 text-emerald-900">
                 <svg
-                  aria-hidden="true"
+                  aria-hidden=""
                   focusable="false"
                   data-prefix="fab"
                   data-icon="instagram"
@@ -103,7 +103,7 @@ const SwipeFooter = () => {
               </a>
               <a href="#!" className="mr-6 text-emerald-900">
                 <svg
-                  aria-hidden="true"
+                  aria-hidden=""
                   focusable="false"
                   data-prefix="fab"
                   data-icon="linkedin-in"
@@ -120,7 +120,7 @@ const SwipeFooter = () => {
               </a>
               <a href="#!" className="mr-6 text-emerald-900">
                 <svg
-                  aria-hidden="true"
+                  aria-hidden=""
                   focusable="false"
                   data-prefix="fab"
                   data-icon="github"
@@ -152,7 +152,7 @@ const SwipeFooter = () => {
           "
                 >
                   <svg
-                    aria-hidden="true"
+                    aria-hidden=""
                     focusable="false"
                     data-prefix="fas"
                     data-icon="cubes"
@@ -229,7 +229,7 @@ const SwipeFooter = () => {
                 </h6>
                 <p className="flex items-center justify-center md:justify-start mb-4 text-blue-200">
                   <svg
-                    aria-hidden="true"
+                    aria-hidden=""
                     focusable="false"
                     data-prefix="fas"
                     data-icon="home"
@@ -247,7 +247,7 @@ const SwipeFooter = () => {
                 </p>
                 <p className="flex items-center justify-center md:justify-start mb-4 text-blue-200">
                   <svg
-                    aria-hidden="true"
+                    aria-hidden=""
                     focusable="false"
                     data-prefix="fas"
                     data-icon="envelope"
@@ -265,7 +265,7 @@ const SwipeFooter = () => {
                 </p>
                 <p className="flex items-center justify-center md:justify-start mb-4 text-blue-200">
                   <svg
-                    aria-hidden="true"
+                    aria-hidden=""
                     focusable="false"
                     data-prefix="fas"
                     data-icon="phone"
